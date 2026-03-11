@@ -63,64 +63,64 @@
     <div class="max-w-3xl mx-auto">
         
         <header class="text-center mb-16 flex flex-col items-center">
-            <a href="YOUR_OFFICIAL_WEBSITE_URL" target="_blank" class="inline-block logo-container mb-6">
+            <a href="https://www.bab-eap.com.tw" target="_blank" class="inline-block logo-container mb-6">
                 <img src="logo.png" alt="寶安倍 Logo" class="w-full h-full object-cover">
             </a>
             <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-3">企業員工照顧離職隱形成本計算機</h1>
             <p class="text-lg text-slate-500 font-light max-w-xl">精確量化失能照護風險對企業造成的無形耗損，為您的 EAP 決策提供數據支持</p>
         </header>
 
-        <div class="glass-card p-8 md:p-12 mb-10">
-            <h2 class="text-xl font-semibold mb-8 border-l-4 border-brand pl-4 text-brand">輸入計算參數</h2>
+        <div class="glass-card p-10 md:p-14 mb-10">
+            <h2 class="text-2xl font-bold mb-10 border-l-4 border-brand pl-4 text-brand">輸入計算參數</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">員工平均月薪 (全薪)</label>
-                    <input type="number" id="salary" placeholder="NT$ 55,000" class="w-full rounded-xl p-3.5 input-style">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">員工平均月薪 (全薪)</label>
+                    <input type="number" id="salary" placeholder="NT$ 55,000" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">一年因照顧請假天數</label>
-                    <input type="number" id="leaveDays" placeholder="15" class="w-full rounded-xl p-3.5 input-style">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">一年因照顧請假天數</label>
+                    <input type="number" id="leaveDays" placeholder="15" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">職位類型</label>
-                    <select id="positionType" class="w-full rounded-xl p-3.5 input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">職位類型</label>
+                    <select id="positionType" class="w-full rounded-xl p-4 text-lg input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="1.0">行政/後勤 (1.0)</option>
                         <option value="1.5">專業技術/業務 (1.5)</option>
                         <option value="2.0">核心管理職 (2.0)</option>
                     </select>
                 </div>
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">職務代理狀況</label>
-                    <select id="proxyStatus" class="w-full rounded-xl p-3.5 input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">職務代理狀況</label>
+                    <select id="proxyStatus" class="w-full rounded-xl p-4 text-lg input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="0.5">同事兼任 (負擔較輕)</option>
                         <option value="1.2">需另聘臨時工/高壓代班</option>
                     </select>
                 </div>
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">長輩失能/照護狀態</label>
-                    <select id="disabilityStatus" class="w-full rounded-xl p-3.5 input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">長輩失能/照護狀態</label>
+                    <select id="disabilityStatus" class="w-full rounded-xl p-4 text-lg input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="0.15">輕度 (穩定就醫) - 離職風險 15%</option>
-                        <option value="0.35">中度 (頻繁進出) - 離職風險 35%</option>
+                        <option value="0.35">中度 (頻繁就醫) - 離職風險 35%</option>
                         <option value="0.60">重度 (24hr照護) - 離職風險 60%</option>
                     </select>
                 </div>
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">預估招募空窗月數</label>
-                    <input type="number" id="vacancyMonths" value="3" class="w-full rounded-xl p-3.5 input-style">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">預估招募空窗月數</label>
+                    <input type="number" id="vacancyMonths" value="3" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">外部招募費用</label>
-                    <input type="number" id="recruitmentFee" value="15000" class="w-full rounded-xl p-3.5 input-style">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">外部招募費用</label>
+                    <input type="number" id="recruitmentFee" value="15000" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
-                <div class="space-y-1.5">
-                    <label class="text-sm font-semibold text-slate-600">面試總時數 (高階主管)</label>
-                    <input type="number" id="interviewHours" value="10" class="w-full rounded-xl p-3.5 input-style">
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">面試總時數 (高階主管)</label>
+                    <input type="number" id="interviewHours" value="10" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
             </div>
         </div>
 
-        <button onclick="calculate()" class="w-full md:w-auto md:px-12 btn-brand text-white font-semibold py-4 rounded-xl text-lg shadow-lg block mx-auto mb-10">
+        <button onclick="calculate()" class="w-full md:w-auto md:px-16 btn-brand text-white font-bold py-5 rounded-2xl text-xl shadow-xl block mx-auto mb-16">
             立即計算風險耗損
         </button>
 
