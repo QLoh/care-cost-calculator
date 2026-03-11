@@ -124,7 +124,7 @@
             立即計算風險耗損
         </button>
 
-        <div id="result" class="hidden space-y-10 animate-fadeIn">
+<div id="result" class="hidden space-y-10 animate-fadeIn text-left">
     
     <div class="bg-white rounded-[32px] p-10 md:p-14 shadow-xl border-t-8 border-brand">
         <div class="flex items-center mb-8">
@@ -132,59 +132,66 @@
             <h3 class="text-2xl font-black text-slate-800 tracking-tight">年度請假隱性耗損分析</h3>
         </div>
         
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-slate-50 rounded-2xl p-8 border border-slate-100">
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div class="mb-4 md:mb-0">
-                <span class="text-lg font-bold text-slate-600 block mb-1">已發生直接缺勤成本</span>
-                <span class="text-sm text-slate-400 font-medium">*(僅計算法定規費固定負擔與代理產值損失，不包含有薪支付)</span>
+                <p class="text-lg font-bold text-slate-600 mb-1">已發生直接缺勤成本</p>
+                <p class="text-sm font-medium text-slate-400">*(僅計算法定規費固定負擔與代理產值損失)</p>
             </div>
             <div class="text-right">
                 <span id="directCost" class="text-5xl md:text-6xl font-black text-brand tracking-tighter"></span>
             </div>
         </div>
+
+        <div class="bg-slate-100/50 rounded-xl p-6 border-l-4 border-slate-300">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">💡 計算公式說明</p>
+            <p class="text-sm text-slate-600 leading-relaxed">
+                <span class="font-bold">法定規費：</span> (月薪 × 20%勞健保提撥) ÷ 30天 × 請假天數<br>
+                <span class="font-bold">產值損耗：</span> 日薪 × 職位加權 × 代理損耗比 × 請假天數
+            </p>
+        </div>
     </div>
 
-    <div class="bg-[#2c3e50] rounded-[32px] p-10 md:p-14 shadow-2xl text-white relative">
-        <div class="flex items-center mb-10">
-            <span class="text-3xl mr-3">⚠️</span>
-            <h3 class="text-2xl font-black tracking-tight">離職重置與風險期望值</h3>
+    <div class="bg-[#2c3e50] rounded-[32px] p-10 md:p-14 shadow-2xl relative overflow-hidden">
+        <div class="flex items-center mb-10 text-white">
+            <span class="text-3xl mr-3">⚖️</span>
+            <h3 class="text-2xl font-black tracking-tight">離職風險期望值評估</h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative">
             <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
-                <p class="text-slate-300 text-base font-bold mb-3 uppercase tracking-widest">完整招募重置總成本</p>
-                <p id="replacementCost" class="text-3xl font-bold text-white"></p>
-                <p class="text-xs text-slate-500 mt-4 leading-relaxed">
-                    包含空窗期產值損失、外部招募費用及主管面試培訓時效之總和評估。
+                <p class="text-slate-300 text-sm font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-3">完整招募重置總成本 (A)</p>
+                <p id="replacementCost" class="text-3xl font-bold text-white mb-4"></p>
+                <p class="text-xs text-[#fafaf9] leading-relaxed">
+                    <span class="font-bold">公式：</span> (月薪 × 空窗月數) + 招募費 + (主管面試工時 × 1,000)
                 </p>
             </div>
             
-            <div class="bg-white rounded-3xl p-8 border-2 border-brand shadow-[0_0_30px_rgba(55,109,134,0.3)]">
-                <p class="text-brand text-base font-black mb-2 uppercase tracking-widest">潛在離職風險期望值</p>
-                <p id="riskLiability" class="text-5xl md:text-6xl font-black text-[#2c3e50] tracking-tighter"></p>
-                <p id="riskFormulaDetail" class="text-xs text-slate-400 mt-4 font-medium italic"></p>
+            <div class="bg-white rounded-3xl p-8 border-2 border-brand shadow-[0_0_20px_rgba(55,109,134,0.3)]">
+                <p class="text-brand text-sm font-black mb-1.5 uppercase tracking-widest font-bold">潛在離職風險期望值</p>
+                <p id="riskLiability" class="text-5xl md:text-6xl font-black text-[#2c3e50] tracking-tighter mb-4"></p>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    <span class="font-bold text-slate-700">公式：</span> 招募成本 (A) × 離職風險機率 (依照護狀態)
+                </p>
             </div>
         </div>
         
         <p class="text-sm text-slate-400 text-center italic font-light">
-            *風險期望值 = 招募總成本 × 離職風險機率，反映企業目前承擔的潛在風險水平。
+            *風險期望值反映企業針對該職位應具備的風險準備感，並非即時支出支出。
         </p>
     </div>
 
-    <div class="mt-8 p-10 bg-white border-2 border-slate-100 rounded-[32px] shadow-sm relative overflow-hidden text-left">
+    <div class="mt-8 p-10 bg-white border-2 border-slate-100 rounded-[32px] shadow-sm relative overflow-hidden">
         <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand"></div>
         <h4 class="text-xl font-bold text-brand mb-4 flex items-center">
             💡 專業顧問分析小結
         </h4>
-        <div class="space-y-4 text-lg text-slate-700 leading-relaxed font-medium">
+        <div class="space-y-4 text-lg text-slate-700 leading-relaxed">
             <p>
-                上述數據試算了人才流失對企業營運的潛在財務衝擊。當離職風險期望值過高時，代表員工的照護壓力已顯著影響其職涯穩定度。
-            </p>
-            <p>
-                透過導入專業的 <strong>EAP 員工協助方案</strong> 或 <strong>寶安貝陪診服務</strong>，企業能有效降低員工因家庭因素產生的非預期請假，進而守護核心人才資產，將風險成本轉化為企業競爭力。
+                數據顯示，該員因照顧壓力導致的人才流失風險已具備實質影響。透過導入專業的 <strong>EAP 員工協助方案</strong> 或 <strong>寶安貝陪診服務</strong>，能有效降低非預期請假，將風險成本轉化為企業留才競爭力。
             </p>
         </div>
         
-        <div class="mt-8 pt-6 border-t border-slate-100 text-center md:text-left">
+        <div class="mt-8 pt-6 border-t border-slate-100">
             <a href="https://www.bab-eap.com.tw" target="_blank" class="inline-flex items-center text-brand font-black hover:underline text-xl group">
                 了解寶安倍如何降低企業人才風險
                 <svg class="w-6 h-6 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -194,7 +201,6 @@
         </div>
     </div>
 </div>
-
             <div class="text-center py-10">
                 ...
             </div>
