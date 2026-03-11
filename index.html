@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>企業員工照顧離職隱形成本計算機 - 寶安貝</title>
+    <title>企業員工照顧離職隱形成本計算機 - 寶安倍</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { font-family: 'Microsoft JhengHei', sans-serif; background-color: #f8fafc; }
@@ -20,16 +20,16 @@
         <div class="card p-6 mb-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">員工平均月薪 (全薪)</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">員工平均月薪 (全薪含獎金)</label>
                     <input type="number" id="salary" placeholder="例如: 55000" class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">一年因照顧請假天數</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">一年因照顧請假天數（固定支出）</label>
                     <input type="number" id="leaveDays" placeholder="例如: 15" class="w-full border rounded p-2">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">職位類型</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">職位類型（產值係數）</label>
                     <select id="positionType" class="w-full border rounded p-2">
                         <option value="1.0">行政/後勤 (1.0)</option>
                         <option value="1.5">專業技術/業務 (1.5)</option>
@@ -37,7 +37,7 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">職務代理狀況</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">職務代理狀況（代理成本）</label>
                     <select id="proxyStatus" class="w-full border rounded p-2">
                         <option value="0.5">同事兼任 (負擔較輕)</option>
                         <option value="1.2">需另聘臨時工/高壓代班</option>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">長輩失能/照護狀態</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">長輩失能/照護狀態（風險係數）</label>
                     <select id="disabilityStatus" class="w-full border rounded p-2">
                         <option value="0.15">輕度 (偶爾陪診) - 離職風險 15%</option>
                         <option value="0.35">中度 (頻繁就醫) - 離職風險 35%</option>
@@ -62,7 +62,7 @@
                     <input type="number" id="recruitmentFee" value="15000" class="w-full border rounded p-2">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">面試總投入工時 (高階主管)</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">面試總投入工時 (主管投入時間)</label>
                     <input type="number" id="interviewHours" value="10" class="w-full border rounded p-2">
                 </div>
             </div>
@@ -89,7 +89,7 @@
                 <strong>專業建議：</strong> 
                 當隱形成本大於 NT$ 50,000 時，導入專業 EAP 或陪診服務能有效降低員工離職率。
                 <br><br>
-                <a href="https://bab-eap.com.tw" class="underline font-bold">了解寶安貝如何幫您降低人才流失風險 →</a>
+                <a href="https://www.bab-eap.com.tw" class="underline font-bold">了解寶安倍如何幫您降低人才流失風險 →</a>
             </div>
         </div>
     </div>
