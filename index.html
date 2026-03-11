@@ -79,11 +79,11 @@
                     <input type="number" id="salary" placeholder="NT$ 55,000" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">一年因照顧請假天數</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">一年因照顧請假天數（固定成本）</label>
                     <input type="number" id="leaveDays" placeholder="15" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">職位類型</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">職位類型（）</label>
                     <select id="positionType" class="w-full rounded-xl p-4 text-lg input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="1.0">行政/後勤 (1.0)</option>
                         <option value="1.5">專業技術/業務 (1.5)</option>
@@ -91,14 +91,14 @@
                     </select>
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">職務代理狀況</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">職務代理狀況（代理係數）</label>
                     <select id="proxyStatus" class="w-full rounded-xl p-4 text-lg input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="0.5">同事兼任 (負擔較輕)</option>
                         <option value="1.2">需另聘臨時工/高壓代班</option>
                     </select>
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">長輩失能/照護狀態</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">長輩失能/照護狀態（離職風險係數）</label>
                     <select id="disabilityStatus" class="w-full rounded-xl p-4 text-lg input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="0.15">輕度 (穩定就醫) - 離職風險 15%</option>
                         <option value="0.35">中度 (頻繁就醫) - 離職風險 35%</option>
@@ -106,15 +106,15 @@
                     </select>
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">預估招募空窗月數</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">重置成本：預估招募空窗月數</label>
                     <input type="number" id="vacancyMonths" value="3" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">外部招募費用</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">重置成本：外部招募費用</label>
                     <input type="number" id="recruitmentFee" value="15000" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">面試總時數 (高階主管)</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">重置成本：面試總時數 (高階主管)</label>
                     <input type="number" id="interviewHours" value="10" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
             </div>
