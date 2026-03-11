@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企業員工照顧離職隱形成本計算機 - 寶安貝</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Microsoft JhengHei', sans-serif; background-color: #f8fafc; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-2xl mx-auto">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-slate-800 mb-2">企業員工照顧離職隱形成本計算機</h1>
+            <p class="text-slate-600">幫助企業主量化「隱形照顧者」對公司造成的營運風險</p>
+        </header>
+
+        <div class="card p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">員工平均月薪 (全薪)</label>
+                    <input type="number" id="salary" placeholder="例如: 55000" class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">一年因照顧請假天數</label>
+                    <input type="number" id="leaveDays" placeholder="例如: 15" class="w-full border rounded p-2">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">職位類型</label>
+                    <select id="positionType" class="w-full border rounded p-2">
+                        <option value="1.0">行政/後勤 (1.0)</option>
+                        <option value="1.5">專業技術/業務 (1.5)</option>
+                        <option value="2.0">核心管理職 (2.0)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">職務代理狀況</label>
+                    <select id="proxyStatus" class="w-full border rounded p-2">
+                        <option value="0.5">同事兼任 (負擔較輕)</option>
+                        <option value="1.2">需另聘臨時工/高壓代班</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">長輩失能/照護狀態</label>
+                    <select id="disabilityStatus" class="w-full border rounded p-2">
+                        <option value="0.15">輕度 (偶爾陪診) - 離職風險 15%</option>
+                        <option value="0.35">中度 (頻繁就醫) - 離職風險 35%</option>
+                        <option value="0.60">重度 (24hr照護需求) - 離職風險 60%</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">預估招募空窗月數</label>
+                    <input type="number" id="vacancyMonths" value="3" class="w-full border rounded p-2">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">外部招募費用</label>
+                    <input type="number" id="recruitmentFee" value="15000" class="w-full border rounded p-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">面試總投入工時 (高階主管)</label>
+                    <input type="number" id="interviewHours" value="10" class="w-full border rounded p-2">
+                </div>
+            </div>
+
+            <button onclick="calculate()" class="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-200">
+                立即計算隱形成本
+            </button>
+        </div>
+
+        <div id="result" class="hidden card p-6 border-l-8 border-blue-500">
+            <h2 class="text-xl font-bold text-slate-800 mb-4">試算報告摘要</h2>
+            <div class="space-y-4">
+                <p class="flex justify-between"><span>已發生直接缺勤成本：</span><span id="directCost" class="font-bold text-red-600"></span></p>
+                <p class="flex justify-between"><span>預估招募重置總成本：</span><span id="replacementCost" class="font-bold"></span></p>
+                <hr>
+                <div class="bg-slate-50 p-4 rounded-lg">
+                    <p class="text-sm text-slate-600 mb-1">🚨 潛在離職風險負債 (Risk Liability)</p>
+                    <p id="riskLiability" class="text-2xl font-bold text-blue-700"></p>
+                    <p class="text-xs text-slate-500 mt-2">*此金額為招募成本乘以離職機率之加權預估，代表公司目前承受的「隱形成本」風險。</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-blue-50 border border-blue-100 rounded text-sm text-blue-800">
+                <strong>專業建議：</strong> 
+                當隱形成本大於 NT$ 50,000 時，導入專業 EAP 或陪診服務能有效降低員工離職率。
+                <br><br>
+                <a href="https://bab-eap.com.tw" class="underline font-bold">了解寶安貝如何幫您降低人才流失風險 →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const salary = parseFloat(document.getElementById('salary').value) || 0;
+            const leaveDays = parseFloat(document.getElementById('leaveDays').value) || 0;
+            const positionType = parseFloat(document.getElementById('positionType').value);
+            const proxyStatus = parseFloat(document.getElementById('proxyStatus').value);
+            const disabilityStatus = parseFloat(document.getElementById('disabilityStatus').value);
+            const vacancyMonths = parseFloat(document.getElementById('vacancyMonths').value) || 0;
+            const recruitmentFee = parseFloat(document.getElementById('recruitmentFee').value) || 0;
+            const interviewHours = parseFloat(document.getElementById('interviewHours').value) || 0;
+
+            const dailySalary = salary / 30;
+            const employerBurden = salary * 1.2; // 含勞健保提撥
+            const dailyEmployerCost = employerBurden / 30;
+
+            // 1. 直接請假損耗
+            const directCost = (dailyEmployerCost * leaveDays) + (dailySalary * positionType * proxyStatus * leaveDays);
+
+            // 2. 招募重置成本 (估算主管時薪為 1000)
+            const replacementTotal = (salary * vacancyMonths) + recruitmentFee + (interviewHours * 1000);
+
+            // 3. 預警風險負債
+            const riskLiability = replacementTotal * disabilityStatus;
+
+            document.getElementById('directCost').innerText = 'NT$ ' + Math.round(directCost).toLocaleString();
+            document.getElementById('replacementCost').innerText = 'NT$ ' + Math.round(replacementTotal).toLocaleString();
+            document.getElementById('riskLiability').innerText = 'NT$ ' + Math.round(riskLiability).toLocaleString();
+
+            document.getElementById('result').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
