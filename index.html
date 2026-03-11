@@ -3,114 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>企業員工照顧離職隱形成本計算機 - 寶安貝</title>
+    <title>企業員工照顧隱形成本計算機 - 寶安貝</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Microsoft JhengHei', sans-serif; background-color: #f8fafc; }
-        .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        body { 
+            font-family: 'Inter', 'Microsoft JhengHei', sans-serif; 
+            background-color: #F8FAFB;
+            color: #2c3e50;
+        }
+        /* 指定主視覺用色 */
+        :root {
+            --brand-color: #376d86;
+            --brand-hover: #2a5a70;
+        }
+        .text-brand { color: var(--brand-color); }
+        .bg-brand { background-color: var(--brand-color); }
+        .border-brand { border-color: var(--brand-color); }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 1);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .input-style {
+            background-color: #fff;
+            border: 1px solid #dcdcdc;
+            transition: all 0.2s;
+        }
+        .input-style:focus {
+            border-color: var(--brand-color);
+            box-shadow: 0 0 0 3px rgba(55, 109, 134, 0.1);
+            outline: none;
+        }
+        .btn-brand {
+            background-color: var(--brand-color);
+            transition: all 0.2s ease;
+        }
+        .btn-brand:hover {
+            background-color: var(--brand-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(55, 109, 134, 0.3);
+        }
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
-<body class="p-4 md:p-8">
-    <div class="max-w-2xl mx-auto">
-        <header class="mb-8 text-center">
-            <h1 class="text-3xl font-bold text-slate-800 mb-2">企業員工照顧離職隱形成本計算機</h1>
-            <p class="text-slate-600">幫助企業主量化「隱形照顧者」對公司造成的營運風險</p>
+<body class="antialiased py-12 px-4 md:px-0">
+    <div class="max-w-3xl mx-auto">
+        
+        <header class="text-center mb-16 flex flex-col items-center">
+            <a href="YOUR_OFFICIAL_WEBSITE_URL" target="_blank" class="inline-block logo-container mb-6">
+                <img src="logo.png" alt="寶安貝 Logo" class="w-full h-full object-cover">
+            </a>
+            <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-3">企業員工照顧離職隱形成本計算機</h1>
+            <p class="text-lg text-slate-500 font-light max-w-xl">精確量化失能照護風險對企業造成的無形耗損，為您的 EAP 決策提供數據支持</p>
         </header>
 
-        <div class="card p-6 mb-8 border-t-4 border-blue-500">
-            <h3 class="text-lg font-bold text-slate-700 mb-4">輸入計算參數</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">員工平均月薪 (全薪)</label>
-                    <input type="number" id="salary" placeholder="例如: 55000" class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none">
+        <div class="glass-card p-8 md:p-12 mb-10">
+            <h2 class="text-xl font-semibold mb-8 border-l-4 border-brand pl-4 text-brand">輸入計算參數</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">員工平均月薪 (全薪)</label>
+                    <input type="number" id="salary" placeholder="NT$ 55,000" class="w-full rounded-xl p-3.5 input-style">
                 </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">一年因照顧請假天數</label>
-                    <input type="number" id="leaveDays" placeholder="例如: 15" class="w-full border rounded p-2">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">一年因照顧請假天數</label>
+                    <input type="number" id="leaveDays" placeholder="15" class="w-full rounded-xl p-3.5 input-style">
                 </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">職位類型</label>
-                    <select id="positionType" class="w-full border rounded p-2">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">職位類型</label>
+                    <select id="positionType" class="w-full rounded-xl p-3.5 input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="1.0">行政/後勤 (1.0)</option>
                         <option value="1.5">專業技術/業務 (1.5)</option>
                         <option value="2.0">核心管理職 (2.0)</option>
                     </select>
                 </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">職務代理狀況</label>
-                    <select id="proxyStatus" class="w-full border rounded p-2">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">職務代理狀況</label>
+                    <select id="proxyStatus" class="w-full rounded-xl p-3.5 input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
                         <option value="0.5">同事兼任 (負擔較輕)</option>
                         <option value="1.2">需另聘臨時工/高壓代班</option>
                     </select>
                 </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">長輩失能/照護狀態</label>
-                    <select id="disabilityStatus" class="w-full border rounded p-2">
-                        <option value="0.15">輕度 (偶爾陪診) - 離職風險 15%</option>
-                        <option value="0.35">中度 (頻繁就醫) - 離職風險 35%</option>
-                        <option value="0.60">重度 (24hr照護需求) - 離職風險 60%</option>
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">長輩失能/照護狀態</label>
+                    <select id="disabilityStatus" class="w-full rounded-xl p-3.5 input-style appearance-none bg-no-repeat bg-[right_1rem_center]">
+                        <option value="0.15">輕度 (穩定就醫) - 離職風險 15%</option>
+                        <option value="0.35">中度 (頻繁進出) - 離職風險 35%</option>
+                        <option value="0.60">重度 (24hr照護) - 離職風險 60%</option>
                     </select>
                 </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">預估招募空窗月數</label>
-                    <input type="number" id="vacancyMonths" value="3" class="w-full border rounded p-2">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">預估招募空窗月數</label>
+                    <input type="number" id="vacancyMonths" value="3" class="w-full rounded-xl p-3.5 input-style">
                 </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">外部招募費用</label>
-                    <input type="number" id="recruitmentFee" value="15000" class="w-full border rounded p-2">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">外部招募費用</label>
+                    <input type="number" id="recruitmentFee" value="15000" class="w-full rounded-xl p-3.5 input-style">
                 </div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">面試總投入工時 (高階主管)</label>
-                    <input type="number" id="interviewHours" value="10" class="w-full border rounded p-2">
+                <div class="space-y-1.5">
+                    <label class="text-sm font-semibold text-slate-600">面試總時數 (高階主管)</label>
+                    <input type="number" id="interviewHours" value="10" class="w-full rounded-xl p-3.5 input-style">
                 </div>
             </div>
-
-            <button onclick="calculate()" class="w-full mt-8 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-200 shadow-lg">
-                立即計算隱形成本
-            </button>
         </div>
 
-        <div id="result" class="hidden space-y-4">
-            <div class="card p-6 border-l-8 border-amber-500">
-                <h2 class="text-xl font-bold text-slate-800 mb-4">1. 年度請假隱性耗損</h2>
-                <div class="space-y-3">
-                    <p class="flex justify-between items-center">
-                        <span class="text-slate-600">已發生直接缺勤成本：</span>
-                        <span id="directCost" class="text-xl font-bold text-amber-600"></span>
-                    </p>
-                    <p class="text-xs text-slate-400">*(僅計算保險固定成本與產值損失，不計入已扣除之薪資)</p>
-                </div>
-            </div>
+        <button onclick="calculate()" class="w-full md:w-auto md:px-12 btn-brand text-white font-semibold py-4 rounded-xl text-lg shadow-lg block mx-auto mb-10">
+            立即計算風險耗損
+        </button>
 
-            <div class="card p-6 border-l-8 border-indigo-600 bg-indigo-50/30">
-                <h2 class="text-xl font-bold text-slate-800 mb-4">2. 離職重置與風險成本</h2>
-                <div class="space-y-4">
-                    <p class="flex justify-between items-center">
-                        <span class="text-slate-600">完整招募重置總成本：</span>
-                        <span id="replacementCost" class="text-xl font-bold text-indigo-700"></span>
-                    </p>
-                    <div class="bg-white p-4 rounded-lg border border-indigo-100 shadow-sm">
-                        <p class="text-sm text-indigo-800 font-semibold mb-1">🚨 潛在離職風險負債 (Risk Liability)</p>
-                        <p id="riskLiability" class="text-3xl font-black text-indigo-600"></p>
-                        <p class="text-xs text-slate-500 mt-2">*此金額為招募成本乘以離職機率之加權預估，代表公司目前承受的風險壓力。</p>
+        <div id="result" class="hidden space-y-8 animate-fadeIn">
+            <div class="bg-white rounded-3xl p-8 shadow-xl border-l-8 border-brand">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center">📊 年度請假隱性耗損</h3>
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b pb-6 space-y-2 sm:space-y-0">
+                    <span class="text-slate-600 text-lg">已發生直接缺勤成本</span>
+                    <div class="text-left sm:text-right">
+                        <span id="directCost" class="text-4xl font-bold text-brand block"></span>
+                        <span class="text-xs text-slate-400">*(不包含有薪支付)</span>
                     </div>
                 </div>
             </div>
-            
-            <div class="mt-6 p-4 bg-blue-50 border border-blue-100 rounded text-sm text-blue-800">
-                <strong>專業建議：</strong> 
-                當隱形成本與風險負債加總過高時，導入專業 EAP 或陪診服務能有效保護公司資產與人才。
-                <br><br>
-                <a href="https://bab-eap.com.tw" class="underline font-bold">了解寶安貝如何幫您降低人才流失風險 →</a>
+
+            <div class="bg-[#2c3e50] rounded-3xl p-8 shadow-2xl text-white">
+                <h3 class="text-xl font-bold mb-6 flex items-center">⚠️ 離職重置與風險負債</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white/5 p-6 rounded-2xl">
+                        <p class="text-slate-300 text-sm mb-1 uppercase">招募重置總成本 (估算)</p>
+                        <p id="replacementCost" class="text-2xl font-bold"></p>
+                    </div>
+                    <div class="bg-white/10 p-6 rounded-2xl ring-1 ring-white/15">
+                        <p class="text-brand text-sm mb-1 uppercase font-semibold">潛在離職風險負債</p>
+                        <p id="riskLiability" class="text-4xl font-black text-white"></p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 text-center italic mt-2">*風險負債 = 招募成本 × 離職風險機率，反映公司目前承受的「隱形成本」懸空負債。</p>
             </div>
         </div>
     </div>
 
     <script>
         function calculate() {
+            // 計算邏輯保持不變
             const salary = parseFloat(document.getElementById('salary').value) || 0;
             const leaveDays = parseFloat(document.getElementById('leaveDays').value) || 0;
             const positionType = parseFloat(document.getElementById('positionType').value);
@@ -122,12 +167,12 @@
 
             const dailySalary = salary / 30;
             const employerBurden = salary * 1.2; // 含勞健保提撥
-            const dailyEmployerCost = (salary * 0.2) / 30; // 僅算雇主額外負擔的20%
+            const dailyEmployerCost = employerBurden / 30;
 
-            // 1. 直接請假損耗 (不計入有薪支付，僅算保險固定成本與產值加權)
+            // 1. 直接請假損耗 (不計入事假扣薪，僅計法定提撥損耗與代理產值權重)
             const directCost = (dailyEmployerCost * leaveDays) + (dailySalary * positionType * proxyStatus * leaveDays);
 
-            // 2. 招募重置成本 (估算主管時薪為 1000)
+            // 2. 招募重置成本 (主管時薪估1000)
             const replacementTotal = (salary * vacancyMonths) + recruitmentFee + (interviewHours * 1000);
 
             // 3. 預警風險負債
@@ -137,9 +182,19 @@
             document.getElementById('replacementCost').innerText = 'NT$ ' + Math.round(replacementTotal).toLocaleString();
             document.getElementById('riskLiability').innerText = 'NT$ ' + Math.round(riskLiability).toLocaleString();
 
-            document.getElementById('result').classList.remove('hidden');
-            window.scrollTo({ top: document.getElementById('result').offsetTop, behavior: 'smooth' });
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('hidden');
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.4s ease-out;
+        }
+    </style>
 </body>
 </html>
