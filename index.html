@@ -6,106 +6,53 @@
     <title>企業員工照顧離職隱形成本計算機 - 寶安倍</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { 
-            font-family: 'Inter', 'Microsoft JhengHei', sans-serif; 
-            background-color: #F8FAFB;
-            color: #2c3e50;
-        }
-        :root {
-            --brand-color: #376d86;
-            --brand-hover: #2a5a70;
-        }
-        .text-brand { color: var(--brand-color); }
-        .bg-brand { background-color: var(--brand-color); }
-        .border-brand { border-color: var(--brand-color); }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 1);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-        }
-        .input-style {
-            background-color: #fff;
-            border: 1px solid #dcdcdc;
-            transition: all 0.2s;
-        }
-        .input-style:focus {
-            border-color: var(--brand-color);
-            box-shadow: 0 0 0 3px rgba(55, 109, 134, 0.1);
-            outline: none;
-        }
-        .btn-brand {
-            background-color: var(--brand-color);
-            transition: all 0.2s ease;
-        }
-        .btn-brand:hover {
-            background-color: var(--brand-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(55, 109, 134, 0.3);
-        }
-        .logo-container {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 1px solid #eaeaea;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .logo-container:hover {
-            transform: scale(1.05);
-        }
+        body { font-family: 'Inter', 'Microsoft JhengHei', sans-serif; background-color: #F8FAFB; color: #2c3e50; text-align: left; }
+        .text-brand { color: #376d86; }
+        .bg-brand { background-color: #376d86; }
+        .border-brand { border-color: #376d86; }
+        .glass-card { background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.03); }
+        .input-style { background-color: #fff; border: 1px solid #dcdcdc; transition: all 0.2s; }
+        .input-style:focus { border-color: #376d86; box-shadow: 0 0 0 3px rgba(55, 109, 134, 0.1); outline: none; }
+        .btn-brand { background-color: #376d86; transition: all 0.2s ease; }
+        .btn-brand:hover { background-color: #2a5a70; transform: translateY(-1px); box-shadow: 0 5px 15px rgba(55, 109, 134, 0.3); }
     </style>
 </head>
-<body class="antialiased py-12 px-4 md:px-0 text-left">
-    <div class="max-w-3xl mx-auto">
+<body class="antialiased py-12 px-4 md:px-0">
+    <div class="max-w-3xl mx-auto text-left">
         
         <header class="text-center mb-16 flex flex-col items-center">
-            <a href="https://www.bab-eap.com.tw" target="_blank" class="inline-block logo-container mb-6 bg-white">
-                <img src="logo.png" alt="寶安倍 Logo" class="w-full h-full object-contain">
-            </a>
-            <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-6 px-4">企業員工照顧離職隱形成本計算機</h1>
+            <h1 class="text-4xl font-bold tracking-tight text-slate-900 mb-6">企業員工照顧離職隱形成本計算機</h1>
             <p class="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-                精確量化失能照護風險對企業造成的無形耗損，<br class="hidden md:block">
-                為您的 EAP 決策提供數據支持
+                基於風險管理矩陣，量化超高齡社會下的組織人力耗損
             </p>
         </header>
 
         <div class="glass-card p-10 md:p-14 mb-10">
             <h2 class="text-2xl font-bold mb-10 border-l-4 border-brand pl-4 text-brand">輸入計算參數</h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">員工平均月薪 (全薪)</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">員工平均月薪</label>
                     <input type="number" id="salary" placeholder="NT$ 55,000" class="w-full rounded-xl p-4 text-lg input-style">
+                </div>
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">職位產值權重</label>
+                    <select id="positionType" class="w-full rounded-xl p-4 text-lg input-style">
+                        <option value="1.0">一般行政 / 基層人員 (1.0)</option>
+                        <option value="1.5">中階主管 / 專業技術 (1.5)</option>
+                        <option value="2.0">核心決策 / 高階管理 (2.0)</option>
+                    </select>
                 </div>
                 <div class="space-y-2.5">
                     <label class="text-base font-bold text-slate-700 ml-1">一年因照顧請假天數</label>
                     <input type="number" id="leaveDays" placeholder="15" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">職位類型 (產值加權)</label>
-                    <select id="positionType" class="w-full rounded-xl p-4 text-lg input-style">
-                        <option value="1.0">行政 / 後勤 (1.0)</option>
-                        <option value="1.5">專業技術 / 業務 (1.5)</option>
-                        <option value="2.0">核心管理職 (2.0)</option>
-                    </select>
-                </div>
-                <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">職務代理狀況</label>
-                    <select id="proxyStatus" class="w-full rounded-xl p-4 text-lg input-style">
-                        <option value="0.5">同事兼任 (負擔較輕)</option>
-                        <option value="1.2">需另聘臨時工 / 高壓代班</option>
-                    </select>
-                </div>
-                <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">當前照護階段 (離職風險預判)</label>
+                    <label class="text-base font-bold text-slate-700 ml-1">當前照顧壓力等級 (機率預判)</label>
                     <select id="disabilityStatus" class="w-full rounded-xl p-4 text-lg input-style">
-                        <option value="0.10">穩定安置 / 送機構 (機率 10%)</option>
-                        <option value="0.15">穩定陪診中 (機率 15%)</option>
-                        <option value="0.45">急性期 / 頻繁就醫中 (機率 45%)</option>
-                        <option value="0.30">重度照護 / 居家臥床 (機率 30%)</option>
+                        <option value="0.10">安置穩定 / 輕度 (10%)</option>
+                        <option value="0.20">慢性病穩定追蹤 (20%)</option>
+                        <option value="0.45">急性期 / 頻繁陪診中 (45%)</option>
+                        <option value="0.35">重度照護 / 居家臥床 (35%)</option>
                     </select>
                 </div>
                 <div class="space-y-2.5">
@@ -113,99 +60,67 @@
                     <input type="number" id="vacancyMonths" value="3" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">外部招募總費用</label>
-                    <input type="number" id="recruitmentFee" value="15000" class="w-full rounded-xl p-4 text-lg input-style">
-                </div>
-                <div class="space-y-2.5">
-                    <label class="text-base font-bold text-slate-700 ml-1">主管面試培訓總工時</label>
-                    <input type="number" id="interviewHours" value="10" class="w-full rounded-xl p-4 text-lg input-style">
+                    <label class="text-base font-bold text-slate-700 ml-1">外部招募與培訓費用</label>
+                    <input type="number" id="recruitmentFee" value="30000" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
             </div>
         </div>
 
         <button onclick="calculate()" class="w-full md:w-auto md:px-16 btn-brand text-white font-bold py-5 rounded-2xl text-xl shadow-xl block mx-auto mb-16">
-            立即計算風險耗損
+            開始分析組織風險
         </button>
 
-        <div id="result" class="hidden space-y-10 animate-fadeIn">
+        <div id="result" class="hidden space-y-10">
             
-            <div class="bg-white rounded-[32px] p-10 md:p-14 shadow-xl border-t-8 border-brand">
-                <div class="flex items-center mb-8">
-                    <span class="text-3xl mr-3">📊</span>
-                    <h3 class="text-2xl font-black text-slate-800 tracking-tight">年度請假隱性耗損分析</h3>
-                </div>
-                
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-                    <div class="mb-4 md:mb-0">
-                        <p class="text-lg font-bold text-slate-600 mb-1">已發生直接缺勤成本</p>
-                        <p class="text-[13px] font-medium text-slate-400">*(僅計算法定規費固定負擔與代理產值損失)</p>
-                    </div>
-                    <div class="text-right">
-                        <span id="directCost" class="text-5xl md:text-6xl font-black text-brand tracking-tighter"></span>
-                    </div>
-                </div>
-
-                <div class="bg-slate-100/50 rounded-xl p-6 border-l-4 border-slate-300">
-                    <p class="text-[13px] font-bold text-slate-500 uppercase tracking-widest mb-2">💡 計算公式說明</p>
-                    <p class="text-[13px] text-slate-600 leading-relaxed">
-                        <span class="font-bold text-slate-700">法定規費：</span> (月薪 × 20% 勞健保提撥) ÷ 30天 × 請假天數<br>
-                        <span class="font-bold text-slate-700">產值損耗：</span> 日薪 × 職位加權 × 代理損耗比 × 請假天數
-                    </p>
-                </div>
-            </div>
-
-            <div class="bg-[#2c3e50] rounded-[32px] p-10 md:p-14 shadow-2xl relative overflow-hidden">
-                <div class="flex items-center justify-between mb-10 text-white relative">
+            <div class="bg-[#2c3e50] rounded-[32px] p-10 md:p-14 shadow-2xl text-left">
+                <div class="flex items-center justify-between mb-10 text-white">
                     <div class="flex items-center">
-                        <span class="text-3xl mr-3">🛡️</span>
-                        <h3 class="text-2xl font-black tracking-tight">離職風險診斷矩陣</h3>
+                        <span class="text-3xl mr-3">📋</span>
+                        <h3 class="text-2xl font-black tracking-tight">組織人力風險診斷矩陣</h3>
                     </div>
-                    <span id="riskStatusLabel" class="px-4 py-1 rounded-full text-[13px] font-black border"></span>
+                    <span id="riskStatusLabel"></span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 relative">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
-                        <p class="text-slate-300 text-[13px] font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-3">離職衝擊規模 (A)</p>
+                        <p class="text-slate-300 text-[13px] font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-3">離職損害規模 (A)</p>
                         <p id="replacementCost" class="text-3xl font-bold text-white mb-4"></p>
-                        <p class="text-[13px] text-[#fafaf9] leading-relaxed italic">
-                            一旦人才流失，企業將面臨的實質重置代價。
-                        </p>
+                        <p class="text-[13px] text-white/70 italic">反映該職缺流失對組織產生的實質重置代價。</p>
                     </div>
-                    
-                    <div class="bg-white rounded-3xl p-8 border-2 border-brand shadow-xl">
-                        <p class="text-brand text-[13px] font-black mb-1.5 uppercase tracking-widest font-bold">當前離職發生機率 (B)</p>
-                        <p id="riskProbText" class="text-5xl font-black text-[#2c3e50] tracking-tighter mb-4"></p>
-                        <p class="text-[13px] text-slate-500 leading-relaxed italic border-t pt-3">
-                            依據長輩照護階段預判。當機率超過 40% 時，建議優先介入支持。
-                        </p>
+                    <div class="bg-white rounded-3xl p-8 border-2 border-[#376d86]">
+                        <p class="text-[#376d86] text-[13px] font-black mb-1.5 uppercase tracking-widest">當前離職發生機率 (B)</p>
+                        <p id="riskProbText" class="text-5xl font-black text-slate-800 mb-4"></p>
+                        <p class="text-[13px] text-slate-500 italic border-t pt-3">基於家庭照顧壓力預判發生的可能性。</p>
                     </div>
                 </div>
                 
-                <p class="text-[13px] text-white/90 text-center italic font-light relative">
-                    *風險矩陣基於管理學衝擊度與發生機率二維模型評估。
+                <p class="text-[12px] text-white/60 text-center font-light">
+                    *風險等級定義：[第一級]應積極介入 | [第二級]應穩定組織人力 | [第三級]核心關懷 | [第四級]受控維持
                 </p>
             </div>
 
-            <div class="mt-8 p-10 bg-white border-2 border-slate-100 rounded-[32px] shadow-sm relative overflow-hidden">
+            <div class="p-10 bg-white border-2 border-slate-100 rounded-[32px] shadow-sm relative overflow-hidden text-left">
                 <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand"></div>
-                <h4 class="text-xl font-bold text-brand mb-4 flex items-center">
-                    💡 專業顧問分析小結
-                </h4> 
-                <div class="space-y-6 text-lg leading-loose text-slate-600 font-light text-left">
+                <h4 class="text-xl font-bold text-brand mb-4 flex items-center">💡 專家診斷小結</h4> 
+                <div class="space-y-6 text-lg leading-loose text-slate-600 font-light">
                     <p id="expertComment"></p>
-                    <p class="leading-loose">
-                        透過導入專業的 <strong class="font-bold text-slate-900">EAP 員工協助方案</strong> 或 <strong class="font-bold text-slate-900">寶安倍醫療溝通暨陪診服務</strong>，
-                        能有效降低非預期請假，將風險成本轉化為企業留才競爭力。
+                    <p>
+                        在超高齡社會與大缺工環境下，導入 <strong class="text-slate-900">寶安倍醫療溝通暨伴診服務</strong> 可有效減輕員工心理負荷。
                     </p>
                 </div>
-                <div class="mt-8 pt-6 border-t border-slate-100 text-left">
-                    <a href="https://www.bab-eap.com.tw" target="_blank" class="inline-flex items-center text-brand font-black hover:underline text-xl group">
-                        了解寶安倍如何降低企業人才風險
-                        <svg class="w-6 h-6 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                    <a href="https://www.bab-eap.com.tw" target="_blank" class="text-brand font-black hover:underline text-xl">了解寶安倍如何降低人才流失風險 →</a>
                 </div>
+            </div>
+
+            <div class="bg-slate-900 text-white rounded-[32px] p-8 md:p-12 text-center">
+                <h5 class="text-xl font-bold mb-4">需要更全面的組織健檢嗎？</h5>
+                <p class="text-slate-400 mb-8 leading-relaxed">
+                    除了個案成本分析，<strong class="text-white font-bold">寶安倍</strong> 亦可協助機構進行<br>
+                    <span class="text-white text-lg">「超高齡社會下的家庭照顧壓力普查」</span><br>
+                    精準掌握組織內部潛藏的照顧風險因子。
+                </p>
+                <a href="#" class="inline-block bg-white text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-slate-200 transition-colors">聯繫機構診斷諮詢</a>
             </div>
         </div>
     </div>
@@ -213,43 +128,37 @@
     <script>
         function calculate() {
             const salary = parseFloat(document.getElementById('salary').value) || 0;
-            const leaveDays = parseFloat(document.getElementById('leaveDays').value) || 0;
             const positionType = parseFloat(document.getElementById('positionType').value);
-            const proxyStatus = parseFloat(document.getElementById('proxyStatus').value);
             const disabilityStatus = parseFloat(document.getElementById('disabilityStatus').value);
             const vacancyMonths = parseFloat(document.getElementById('vacancyMonths').value) || 0;
             const recruitmentFee = parseFloat(document.getElementById('recruitmentFee').value) || 0;
-            const interviewHours = parseFloat(document.getElementById('interviewHours').value) || 0;
 
-            // 1. 直接損耗
-            const dailySalary = salary / 30;
-            const dailyEmployerCost = (salary * 1.2) / 30;
-            const directCost = (dailyEmployerCost * leaveDays) + (dailySalary * positionType * proxyStatus * leaveDays);
+            const replacementTotal = (salary * vacancyMonths) + recruitmentFee;
+            const isHighImpact = replacementTotal >= 250000; 
+            const isHighProb = disabilityStatus >= 0.30;
 
-            // 2. 招募衝擊規模
-            const replacementTotal = (salary * vacancyMonths) + recruitmentFee + (interviewHours * 1000);
-
-            // 3. 渲染
-            document.getElementById('directCost').innerText = 'NT$ ' + Math.round(directCost).toLocaleString();
             document.getElementById('replacementCost').innerText = 'NT$ ' + Math.round(replacementTotal).toLocaleString();
             document.getElementById('riskProbText').innerText = (disabilityStatus * 100) + '%';
 
-            // 4. 判斷等級與評論
-            const statusLabel = document.getElementById('riskStatusLabel');
-            const expertComment = document.getElementById('expertComment');
+            const badge = document.getElementById('riskStatusLabel');
+            const comment = document.getElementById('expertComment');
 
-            if (disabilityStatus >= 0.45) {
-                statusLabel.innerText = "核心人才危機";
-                statusLabel.className = "px-4 py-1 rounded-full text-[13px] font-black bg-red-500 text-white border-red-600";
-                expertComment.innerText = "數據顯示目前處於「頻繁就醫期」的高離職機率階段，且離職衝擊規模巨大。建議立即啟動外部伴診支援，以保全企業核心人力資產。";
-            } else if (disabilityStatus >= 0.30) {
-                statusLabel.innerText = "長期預警區域";
-                statusLabel.className = "px-4 py-1 rounded-full text-[13px] font-black bg-amber-400 text-slate-800 border-amber-500";
-                expertComment.innerText = "目前雖非急性爆發期，但重度照顧的長期壓力正蠶食員工產值。建議評估長期的 EAP 支持，預防突發性離職發生。";
+            if (isHighImpact && isHighProb) {
+                badge.innerText = "第一級：高度警戒 / 積極介入";
+                badge.className = "px-4 py-1 rounded-full text-[13px] font-black bg-red-500 text-white";
+                comment.innerHTML = "<strong>【組織脆弱點】</strong>該職位重置成本極高，且員工照顧壓力已達臨界點。建議立即由<strong>寶安倍</strong>介入專業伴診，避免核心人才非預期離職。";
+            } else if (!isHighImpact && isHighProb) {
+                badge.innerText = "第二級：缺工預警 / 穩定人力";
+                badge.className = "px-4 py-1 rounded-full text-[13px] font-black bg-amber-400 text-slate-800";
+                comment.innerHTML = "<strong>【基層穩定預警】</strong>在大缺工時代，穩定人力即是戰力。員工照顧壓力高，建議主動提供<strong>寶安倍</strong>資源資訊協助家庭穩定，降低流動率。";
+            } else if (isHighImpact && !isHighProb) {
+                badge.innerText = "第三級：核心儲備 / 定期關懷";
+                badge.className = "px-4 py-1 rounded-full text-[13px] font-black bg-sky-500 text-white";
+                comment.innerHTML = "<strong>【核心人才儲備】</strong>家庭照顧狀況暫穩，但因人才重要性高，HR應列入EAP定期關懷名單，預防未來突發性的照護需求衝擊。";
             } else {
-                statusLabel.innerText = "風險尚屬受控";
-                statusLabel.className = "px-4 py-1 rounded-full text-[13px] font-black bg-green-500 text-white border-green-600";
-                expertComment.innerText = "目前風險發生機率尚在穩定區間（多為已安置或送機構狀態）。維持常態性勞務關懷，確保溝通管道暢通即可。";
+                badge.innerText = "第四級：風險受控 / 維持現狀";
+                badge.className = "px-4 py-1 rounded-full text-[13px] font-black bg-green-500 text-white";
+                comment.innerText = "目前各項指標穩定。維持良好的勞資溝通與照顧福利資訊透明化即可。";
             }
 
             const resultDiv = document.getElementById('result');
