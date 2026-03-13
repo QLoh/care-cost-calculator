@@ -32,7 +32,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                 <div class="space-y-2.5">
                     <label class="text-base font-bold text-slate-700 ml-1">員工平均月薪</label>
-                    <input type="number" id="salary" placeholder="55000 (參考預設值)" class="w-full rounded-xl p-4 text-lg input-style">
+                    <input type="number" id="salary" placeholder="NT$ 55,000 (參考預設值)" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
                     <label class="text-base font-bold text-slate-700 ml-1">職位產值權重</label>
@@ -57,11 +57,15 @@
                 </div>
                 <div class="space-y-2.5">
                     <label class="text-base font-bold text-slate-700 ml-1">預估招募空窗月數</label>
-                    <input type="number" id="vacancyMonths" value="3預設值" class="w-full rounded-xl p-4 text-lg input-style">
+                    <input type="number" id="vacancyMonths" placeholder="3 (參考預設值)" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
                 <div class="space-y-2.5">
                     <label class="text-base font-bold text-slate-700 ml-1">外部招募與培訓費用</label>
-                    <input type="number" id="recruitmentFee" value="30000預設值" class="w-full rounded-xl p-4 text-lg input-style">
+                    <input type="number" id="recruitmentFee" placeholder="30,000 (參考預設值)" class="w-full rounded-xl p-4 text-lg input-style">
+                </div>
+                <div class="space-y-2.5">
+                    <label class="text-base font-bold text-slate-700 ml-1">主管面試培訓總工時</label>
+                    <input type="number" id="interviewHours" placeholder="10 (參考預設值)" class="w-full rounded-xl p-4 text-lg input-style">
                 </div>
             </div>
         </div>
@@ -85,8 +89,8 @@
                     <div class="bg-white/5 p-8 rounded-3xl border border-white/10">
                         <p class="text-slate-300 text-[13px] font-bold uppercase tracking-widest border-b border-white/10 pb-2 mb-3">離職損害規模 (A)</p>
                         <p id="replacementCost" class="text-3xl font-bold text-white mb-4"></p>
-                        <p class="text-[13px] text-white/70 font-light">反映該職缺流失對組織產生的顯性成本，不含假期扣薪與業務品質：<br><br>
-                        <p class="text-[13px] text-white/70 font-light">A=(月薪 × 空窗月數) + 外部招募費用 + (主管面試培訓總工時×時薪加權)。</p>
+                        <p class="text-[13px] text-white/70 font-light">反映該職缺流失對組織產生的顯性成本，不含假期扣薪與業務品質：</p>
+                        <p class="text-[13px] text-white/70 font-light mt-2">A = (月薪 × 空窗月數) + 外部招募費用 + (主管面試培訓總工時 × 1,000)</p>
                     </div>
                     <div class="bg-white rounded-3xl p-8 border-2 border-[#376d86]">
                         <p class="text-[#376d86] text-[13px] font-black mb-1.5 uppercase tracking-widest">當前離職發生機率 (B)</p>
@@ -114,38 +118,37 @@
                 </div>
             </div>
 
-            <div class="bg-slate-900 text-white rounded-[32px] p-12 md:p-16 text-center shadow-[0_20px_60px_-15px_rgba(15,23,42,0.6)] border border-slate-700/50 relative overflow-hidden">
-    
-    <div class="max-w-xl mx-auto mb-12">
-    
-        <h5 class="text-3xl font-normal mb-10 tracking-widest">需要更全面的組織健檢嗎？</h5>
-        
-        <div class="text-white/80 text-lg md:text-xl leading-[1.75] font-light tracking-wide">
-            <p>除了個案成本分析，寶安倍亦可協助機構進行</p>
-            <p>「超高齡社會下的家庭照顧壓力普查」</p>
-            <p>精準掌握組織內部潛藏的照顧風險因子</p>
-        </div>
-    </div>
+            <div class="bg-slate-900 text-white rounded-[32px] p-12 md:p-20 text-center shadow-2xl border border-slate-800">
+                <div class="max-w-2xl mx-auto mb-16">
+                    <h5 class="text-3xl font-normal mb-12 tracking-widest">需要更全面的組織健檢嗎？</h5>
+                    <div class="text-white/80 text-lg md:text-xl leading-[2.2] font-light tracking-wide space-y-4">
+                        <p>除了個案成本分析，寶安倍亦可協助機構進行</p>
+                        <p>「超高齡社會下的家庭照顧壓力普查」</p>
+                        <p>精準掌握組織內部潛藏的照顧風險因子</p>
+                    </div>
+                </div>
 
-    <a href="https://lin.ee/RKMKV3c" target="_blank" class="inline-flex items-center justify-center bg-white text-slate-900 px-12 py-5 rounded-full font-normal text-xl hover:bg-slate-50 transition-all shadow-lg">
-        <svg class="w-8 h-8 mr-4" viewBox="0 0 24 24" fill="#06C755">
-            <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975 1.766-1.97 2.548-3.764 2.548-5.968z"/>
-        </svg>
-        加 Line 官方帳號申請調查問卷
-    </a>
-</div>
+                <a href="https://lin.ee/RKMKV3c" target="_blank" class="inline-flex items-center justify-center bg-white text-slate-900 px-12 py-5 rounded-full font-normal text-xl hover:bg-slate-50 transition-all shadow-lg">
+                    <svg class="w-8 h-8 mr-4" viewBox="0 0 24 24" fill="#06C755">
+                        <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975 1.766-1.97 2.548-3.764 2.548-5.968z"/>
+                    </svg>
+                    加 Line 官方帳號申請調查問卷
+                </a>
+            </div>
         </div>
     </div>
 
     <script>
         function calculate() {
             const salary = parseFloat(document.getElementById('salary').value) || 0;
-            const positionType = parseFloat(document.getElementById('positionType').value);
-            const disabilityStatus = parseFloat(document.getElementById('disabilityStatus').value);
             const vacancyMonths = parseFloat(document.getElementById('vacancyMonths').value) || 0;
             const recruitmentFee = parseFloat(document.getElementById('recruitmentFee').value) || 0;
+            const interviewHours = parseFloat(document.getElementById('interviewHours').value) || 0;
+            const disabilityStatus = parseFloat(document.getElementById('disabilityStatus').value);
 
-            const replacementTotal = (salary * vacancyMonths) + recruitmentFee;
+            // A 公式修正：包含主管工時加權
+            const replacementTotal = (salary * vacancyMonths) + recruitmentFee + (interviewHours * 1000);
+            
             const isHighImpact = replacementTotal >= 250000; 
             const isHighProb = disabilityStatus >= 0.30;
 
